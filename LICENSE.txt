@@ -1,11 +1,13 @@
 Isoda MCA (Mono Compatibility Analyzer)
-Freeware License, version 1.0
+Freeware License, version 1.1 (November 17, 2026)
 Copyright (c) 2026 Dr. Hideki Isoda / Texas Tech University
 
 Free plug-in software for precision, professional sound engineering.
 For anyone mixing or mastering on Earth and everywhere else.
 
 Isoda MCA ("the Software") is free of charge but it is not open source.
+This license applies to Isoda MCA version 1.0.7 for Windows (VST3) and
+macOS (VST3 and Audio Unit), and to later versions released under it.
 By installing or using the Software you agree to the terms below.
 
 1. USE
@@ -15,9 +17,10 @@ By installing or using the Software you agree to the terms below.
    or royalty is owed.
 
 2. SHARING
-   You may copy and give away the unmodified installer or install packages,
-   provided that they are free of charge and that this license, the
-   copyright notice and the Isoda branding stay intact.
+   You may copy and give away the unmodified download packages (the
+   Windows install package and the macOS installer), provided that they
+   are free of charge and that this license, the copyright notice and the
+   Isoda branding stay intact.
 
 3. RESTRICTIONS
    You may not sell, rent or sublicense the Software, bundle it with a paid
@@ -31,8 +34,7 @@ By installing or using the Software you agree to the terms below.
    and never sends anything anywhere. To support the MIDI switch, the plugin
    listens to the MIDI controllers connected to your computer; this happens
    only locally and nothing is recorded. The plugin's settings are stored
-   only inside your DAW project. The standalone application keeps its audio
-   device settings in a local file on your computer.
+   only inside your DAW project.
 
 5. OWNERSHIP
    The Software is licensed, not sold. All rights not expressly granted here
