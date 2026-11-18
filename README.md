@@ -49,13 +49,12 @@ The Windows package contains the plug-in, a step-by-step install guide, the Quic
 
 ## Install on Windows
 
-1. **Remove an older version, if you have one.** If you used an earlier installer, uninstall it in *Settings → Apps → Installed apps*. Otherwise delete any older `ISODA MCA.vst3` folder from `C:\Program Files\Common Files\VST3\`.
-2. **Unblock the download.** Right-click the ZIP → **Properties**. At the bottom of the *General* tab, tick **Unblock** (1), then click **OK** (2). Do this *before* extracting, so Windows doesn't flag every file inside.
+1. **Unblock the download.** Right-click the ZIP → **Properties**. At the bottom of the *General* tab, tick **Unblock** (1), then click **OK** (2). Do this *before* extracting, so Windows doesn't flag every file inside.
 
    <p align="center"><img src="docs/images/windows-unblock.png" width="440" alt="Windows file Properties dialog: tick Unblock, then click OK"></p>
 
-3. **Extract and copy.** Right-click the ZIP → **Extract All…**, then copy the **`Isoda MCA.vst3`** folder into `C:\Program Files\Common Files\VST3\`. Click **Continue** when Windows asks for administrator permission.
-4. **Rescan plug-ins** in your DAW (see [Finding MCA in your DAW](#finding-mca-in-your-daw)).
+2. **Extract and copy.** Right-click the ZIP → **Extract All…**, then copy the **`Isoda MCA.vst3`** folder into `C:\Program Files\Common Files\VST3\`. Click **Continue** when Windows asks for administrator permission.
+3. **Rescan plug-ins** in your DAW (see [Finding MCA in your DAW](#finding-mca-in-your-daw)).
 
 <details>
 <summary><b>If Windows or your browser blocks it</b></summary>
@@ -99,13 +98,7 @@ xattr -d com.apple.quarantine ~/Downloads/Isoda-MCA-1.0.7-macOS.pkg
 ```
 
 <details>
-<summary><b>Upgrading from 1.0.6, or a DAW says the plug-in "is damaged"</b></summary>
-
-If you installed **1.0.6 from the manual-install ZIP**, remove those copies first, so your DAW doesn't find MCA twice:
-
-```bash
-rm -rf ~/Library/Audio/Plug-Ins/VST3/"Isoda MCA.vst3" ~/Library/Audio/Plug-Ins/Components/"Isoda MCA.component"
-```
+<summary><b>If a DAW says the plug-in "is damaged"</b></summary>
 
 If a DAW reports that MCA "is damaged" or "can't be opened", clear the download flag on the installed plug-ins and restart the DAW:
 
