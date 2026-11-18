@@ -116,6 +116,8 @@ MCA is listed as **MCA** by **Isoda**, in the *Analyzer* category. If it doesn't
 | **Reaper** | Settings → Plug-ins → VST → **Re-scan**. |
 | **Studio One** | Settings → Locations → VST Plug-Ins → **Reset Blocklist**, then restart. |
 | **Bitwig** | Settings → Locations; Bitwig rescans on start. |
+| **Pyramix** (Windows) | Pyramix picks MCA up from the standard VST3 folder. Restart Pyramix after installing, then insert MCA from a strip's plug-in slot (listed under Isoda). |
+| **DaVinci Resolve Studio** | DaVinci Resolve → Preferences → System → Audio Plugins: make sure the VST3 folder (and Audio Units on a Mac) is enabled, then restart Resolve. Insert MCA in a Fairlight track's effects slot, or drag it from Effects → Audio FX onto a clip. |
 
 ## Using MCA
 
@@ -147,7 +149,7 @@ Insert MCA as the **last plug-in on your master bus**, after your limiter and me
 
 ### Pulling narration out of a video's stereo audio
 
-MCA is just as useful in post-production. Put it on the dialogue or production track in your DAW, or in a video editor that hosts VST3 plug-ins (DaVinci Resolve, Premiere Pro, VEGAS Pro and others), then render with the mode you need:
+MCA is just as useful in post-production. Put it on the dialogue or production track in your DAW, or in a video editor that hosts VST3 plug-ins (DaVinci Resolve Studio, Premiere Pro, VEGAS Pro and others), then render with the mode you need:
 
 - **Voice recorded on one channel**, say a lavalier on the left and the camera mic on the right: **Left** or **Right** takes the clean channel and puts it on both speakers. The correlation meter tells you which case you have: two different mics read low, while a dual-mono copy reads +1.
 - **Voice in the centre over stereo music:** **Mono** keeps the centred voice at full level while wide music, reverb and ambience partly cancel.
