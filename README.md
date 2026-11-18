@@ -7,7 +7,7 @@
 <i>For anyone mixing or mastering on Earth and everywhere else</i></p>
 
 <p align="center">
-  <a href="https://github.com/hidekiisoda/isoda-mca/releases/tag/v1.0.6"><b>Download 1.0.6</b></a> ·
+  <a href="https://github.com/hidekiisoda/isoda-mca/releases/tag/v1.0.7"><b>Download 1.0.7</b></a> ·
   <a href="#install-on-windows">Install on Windows</a> ·
   <a href="#install-on-macos">Install on macOS</a> ·
   <a href="#using-mca">Using MCA</a>
@@ -27,10 +27,10 @@ MCA is a VST3 plug-in for Windows and a VST3 and Audio Unit plug-in for Macs wit
 
 | Platform | Package | Requirements |
 |---|---|---|
-| **Windows** | [Isoda-MCA-1.0.6-Windows-manual-install.zip](https://github.com/hidekiisoda/isoda-mca/releases/download/v1.0.6/Isoda-MCA-1.0.6-Windows-manual-install.zip) | 64-bit Windows 10 or 11, a VST3 host |
-| **macOS** | [Isoda-MCA-1.0.6-macOS-manual-install.zip](https://github.com/hidekiisoda/isoda-mca/releases/download/v1.0.6/Isoda-MCA-1.0.6-macOS-manual-install.zip) | Mac with Apple silicon (M1 or later), macOS 11 or later, a VST3 or Audio Unit host |
+| **Windows** | [Isoda-MCA-1.0.7-Windows-manual-install.zip](https://github.com/hidekiisoda/isoda-mca/releases/download/v1.0.7/Isoda-MCA-1.0.7-Windows-manual-install.zip) | 64-bit Windows 10 or 11, a VST3 host |
+| **macOS** | [Isoda-MCA-1.0.7-macOS.pkg](https://github.com/hidekiisoda/isoda-mca/releases/download/v1.0.7/Isoda-MCA-1.0.7-macOS.pkg) | Mac with Apple silicon (M1 or later), macOS 11 or later, a VST3 or Audio Unit host |
 
-Each package contains the plug-in, a step-by-step install guide, the Quick Start guide and the license. Installation takes about a minute; the steps are below.
+The Windows package contains the plug-in, a step-by-step install guide, the Quick Start guide and the license. The macOS installer puts both the VST3 and the Audio Unit in place. Either way, installation takes about a minute; the steps are below.
 
 ## What it does
 
@@ -50,7 +50,10 @@ Each package contains the plug-in, a step-by-step install guide, the Quick Start
 ## Install on Windows
 
 1. **Remove an older version, if you have one.** If you used an earlier installer, uninstall it in *Settings → Apps → Installed apps*. Otherwise delete any older `ISODA MCA.vst3` folder from `C:\Program Files\Common Files\VST3\`.
-2. **Unblock the download.** Right-click the ZIP → **Properties** → tick **Unblock** at the bottom of the *General* tab → **OK**. Do this *before* extracting, so Windows doesn't flag every file inside.
+2. **Unblock the download.** Right-click the ZIP → **Properties**. At the bottom of the *General* tab, tick **Unblock** (1), then click **OK** (2). Do this *before* extracting, so Windows doesn't flag every file inside.
+
+   <p align="center"><img src="docs/images/windows-unblock.png" width="440" alt="Windows file Properties dialog: tick Unblock, then click OK"></p>
+
 3. **Extract and copy.** Right-click the ZIP → **Extract All…**, then copy the **`Isoda MCA.vst3`** folder into `C:\Program Files\Common Files\VST3\`. Click **Continue** when Windows asks for administrator permission.
 4. **Rescan plug-ins** in your DAW (see [Finding MCA in your DAW](#finding-mca-in-your-daw)).
 
@@ -70,36 +73,45 @@ MCA is free and isn't code-signed with a paid certificate, so Windows treats it 
 
 ## Install on macOS
 
-macOS marks anything downloaded from the internet with a *quarantine* flag. MCA isn't notarized with a paid Apple Developer ID, so the flag has to be removed from the plug-in files before your DAW will load them. One Terminal command does that for these files only; Gatekeeper stays on for everything else.
+1. **Download** `Isoda-MCA-1.0.7-macOS.pkg` and double-click it.
+2. Click **Continue**, read and **Agree** to the license, then click **Install** and enter your Mac password (or use Touch ID).
+3. The installer puts the VST3 in `/Library/Audio/Plug-Ins/VST3` and the Audio Unit in `/Library/Audio/Plug-Ins/Components`. **Customize** lets you skip either one.
+4. **Rescan plug-ins** in your DAW (see [Finding MCA in your DAW](#finding-mca-in-your-daw)).
 
-1. **Unzip** the download: double-click it, if Safari hasn't already. You'll get a folder named `Isoda-MCA-1.0.6-macOS-manual-install` in Downloads.
-2. **Open Terminal**: press ⌘-Space, type *Terminal*, press Return.
-3. Type `cd ` (with a space), **drag the unzipped folder** from Finder into the Terminal window, and press Return.
-4. **Paste these lines** and press Return:
+### If macOS says the installer "can't be opened"
 
-   ```bash
-   xattr -dr com.apple.quarantine .
-   rm -rf ~/Library/Audio/Plug-Ins/VST3/"ISODA MCA.vst3" ~/Library/Audio/Plug-Ins/Components/"ISODA MCA.component"
-   mkdir -p ~/Library/Audio/Plug-Ins/VST3 ~/Library/Audio/Plug-Ins/Components
-   cp -R "Isoda MCA.vst3" ~/Library/Audio/Plug-Ins/VST3/
-   cp -R "Isoda MCA.component" ~/Library/Audio/Plug-Ins/Components/
-   killall -9 AudioComponentRegistrar 2>/dev/null; echo "Done"
-   ```
+MCA is free and isn't notarized with a paid Apple Developer ID, so the first time you open the installer macOS stops it with a message that it "could not verify" it. It contains no network code and collects no data. Allowing it takes four clicks:
 
-   The first line removes the quarantine flag. The second removes an older version if you had one. The next three copy the VST3 and the Audio Unit into your own plug-in folders (no administrator password needed). The last makes macOS register the new Audio Unit straight away.
-5. **Rescan plug-ins** in your DAW (see below).
+**macOS 15 Sequoia and later**
+1. In the message, click **Done**. Don't move the installer to the Bin.
+2. Open **System Settings → Privacy & Security**.
+3. Scroll down to the **Security** section. You'll see *"Isoda-MCA-1.0.7-macOS.pkg" was blocked to protect your Mac*. Click **Open Anyway** next to it.
+4. Enter your password (or use Touch ID), then click **Open Anyway** once more. The installer starts.
 
-<details>
-<summary><b>If a DAW says the plug-in "is damaged" or "can't be opened"</b></summary>
+The *Open Anyway* button is shown for about an hour after the installer was blocked. If you don't see it, double-click the installer again and go straight back to *Privacy & Security*.
 
-Clear the flag on the installed copies and re-apply the local signature that every Apple silicon plug-in needs, then restart the DAW:
+**macOS 11 to 14:** Control-click (or right-click) the installer → **Open** → **Open**.
+
+**Any version, from Terminal:** this removes the download flag from the installer only, after which it opens normally:
 
 ```bash
-xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"Isoda MCA.vst3" ~/Library/Audio/Plug-Ins/Components/"Isoda MCA.component"
-codesign --force --deep -s - ~/Library/Audio/Plug-Ins/VST3/"Isoda MCA.vst3" ~/Library/Audio/Plug-Ins/Components/"Isoda MCA.component"
+xattr -d com.apple.quarantine ~/Downloads/Isoda-MCA-1.0.7-macOS.pkg
 ```
 
-If you installed an earlier version with the `.pkg` installer, also delete the old copies in `/Library/Audio/Plug-Ins/VST3` and `/Library/Audio/Plug-Ins/Components` (Finder → Go → Go to Folder…).
+<details>
+<summary><b>Upgrading from 1.0.6, or a DAW says the plug-in "is damaged"</b></summary>
+
+If you installed **1.0.6 from the manual-install ZIP**, remove those copies first, so your DAW doesn't find MCA twice:
+
+```bash
+rm -rf ~/Library/Audio/Plug-Ins/VST3/"Isoda MCA.vst3" ~/Library/Audio/Plug-Ins/Components/"Isoda MCA.component"
+```
+
+If a DAW reports that MCA "is damaged" or "can't be opened", clear the download flag on the installed plug-ins and restart the DAW:
+
+```bash
+sudo xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/Isoda MCA.vst3" "/Library/Audio/Plug-Ins/Components/Isoda MCA.component"
+```
 </details>
 
 ## Finding MCA in your DAW

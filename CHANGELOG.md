@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.7 (Windows and macOS)
+
+- **Cleaner header.** "MCA" and "Mono Compatibility Analyzer" are larger and line up with the logo.
+- **macOS installer.** The Mac version now comes as a standard `.pkg` installer that puts the VST3 and the Audio Unit in place. It replaces the manual-install ZIP.
+- **Clearer install guide**, with a screenshot of the Windows *Unblock* step and step-by-step help for the macOS *Open Anyway* button.
+
 ## 1.0.6 (Windows and macOS)
 
 - **New name in your DAW.** The plug-in is now listed as **MCA** by **Isoda**, in the *Analyzer* category. Projects saved with earlier versions still open it, with all settings intact.
