@@ -1,5 +1,5 @@
 Isoda MCA (Mono Compatibility Analyzer)
-Freeware License, version 1.1 (November 17, 2026)
+Freeware License (November 17, 2026)
 Copyright (c) 2026 Dr. Hideki Isoda / Texas Tech University
 
 Free plug-in software for precision, professional sound engineering.
