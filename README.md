@@ -73,56 +73,35 @@ MCA is free and isn't code-signed with a paid certificate, so Windows treats it 
 ## Install on macOS
 
 1. **Download** `Isoda-MCA-1.0.7-macOS.pkg` and double-click it.
-2. Click **Continue**, read and **Agree** to the license, then click **Install** and enter your Mac password (or use Touch ID).
-3. The installer puts the VST3 in `/Library/Audio/Plug-Ins/VST3` and the Audio Unit in `/Library/Audio/Plug-Ins/Components`. **Customize** lets you skip either one.
-4. **Rescan plug-ins** in your DAW (see [Finding MCA in your DAW](#finding-mca-in-your-daw)).
+2. **macOS shows an alert** saying the installer was *Not Opened*. That's expected: MCA is free and isn't notarized with a paid Apple Developer ID. Click **Done**.
 
-### If macOS says the installer "can't be opened"
+   <p align="center"><img src="docs/images/macos-alert.png" width="260" alt="macOS alert: Isoda-MCA-1.0.7-macOS.pkg Not Opened. Click Done."></p>
 
-MCA is free and isn't notarized with a paid Apple Developer ID, so the first time you open the installer macOS stops it with a message that it "could not verify" it. It contains no network code and collects no data. Allowing it takes four clicks:
+3. **Open System Settings → Privacy & Security** and scroll down to **Security**. Next to *"Isoda-MCA-1.0.7-macOS.pkg" was blocked to protect your Mac*, click **Open Anyway**. Enter your password (or use Touch ID) and confirm with **Open Anyway**.
 
-**macOS 15 Sequoia and later**
-1. In the message, click **Done**. Don't move the installer to the Bin.
-2. Open **System Settings → Privacy & Security**.
-3. Scroll down to the **Security** section. You'll see *"Isoda-MCA-1.0.7-macOS.pkg" was blocked to protect your Mac*. Click **Open Anyway** next to it.
-4. Enter your password (or use Touch ID), then click **Open Anyway** once more. The installer starts.
+   <p align="center"><img src="docs/images/macos-open-anyway.png" width="620" alt="System Settings, Privacy and Security: click Open Anyway next to the blocked installer"></p>
 
-The *Open Anyway* button is shown for about an hour after the installer was blocked. If you don't see it, double-click the installer again and go straight back to *Privacy & Security*.
-
-**macOS 11 to 14:** Control-click (or right-click) the installer → **Open** → **Open**.
-
-**Any version, from Terminal:** this removes the download flag from the installer only, after which it opens normally:
-
-```bash
-xattr -d com.apple.quarantine ~/Downloads/Isoda-MCA-1.0.7-macOS.pkg
-```
-
-<details>
-<summary><b>If a DAW says the plug-in "is damaged"</b></summary>
-
-If a DAW reports that MCA "is damaged" or "can't be opened", clear the download flag on the installed plug-ins and restart the DAW:
-
-```bash
-sudo xattr -dr com.apple.quarantine "/Library/Audio/Plug-Ins/VST3/Isoda MCA.vst3" "/Library/Audio/Plug-Ins/Components/Isoda MCA.component"
-```
-</details>
+4. **The installer opens.** Click **Continue**, **Agree** to the license, then **Install**. It puts both the VST3 and the Audio Unit in place.
 
 ## Finding MCA in your DAW
 
 MCA is listed as **MCA** by **Isoda**, in the *Analyzer* category. If it doesn't appear, rescan your plug-ins:
 
-| DAW | How to rescan |
+| DAW | How to find MCA |
 |---|---|
-| **Cubase / Nuendo** | Studio → VST Plug-in Manager → Rescan all. If MCA is listed as blocklisted, select it and click **Reactivate**. |
-| **Logic Pro** | Logic Pro → Settings → Plug-in Manager. If MCA shows *failed*, select it and click **Reset & Rescan Selection**. Insert it from an Audio FX slot → Audio Units → Isoda → MCA. |
-| **GarageBand** | Settings → Audio/MIDI → tick **Enable Audio Units**. |
 | **Ableton Live** | Settings → Plug-Ins → turn on the VST3 system folder (and Audio Units on a Mac) → **Rescan**. |
-| **FL Studio** | Options → Manage plugins → **Find installed plugins**. |
-| **Reaper** | Settings → Plug-ins → VST → **Re-scan**. |
-| **Studio One** | Settings → Locations → VST Plug-Ins → **Reset Blocklist**, then restart. |
 | **Bitwig** | Settings → Locations; Bitwig rescans on start. |
-| **Pyramix** (Windows) | Pyramix picks MCA up from the standard VST3 folder. Restart Pyramix after installing, then insert MCA from a strip's plug-in slot (listed under Isoda). |
+| **Cubase / Nuendo** | Studio → VST Plug-in Manager → Rescan all. If MCA is listed as blocklisted, select it and click **Reactivate**. |
 | **DaVinci Resolve Studio** | DaVinci Resolve → Preferences → System → Audio Plugins: make sure the VST3 folder (and Audio Units on a Mac) is enabled, then restart Resolve. Insert MCA in a Fairlight track's effects slot, or drag it from Effects → Audio FX onto a clip. |
+| **Digital Performer** | DP checks plug-ins when it starts. If MCA is missing, open Preferences → Audio Plug-ins, make sure MCA is enabled, and restart DP. Insert it from a track's or the master's insert slot (listed under Isoda). |
+| **FL Studio** | Options → Manage plugins → **Find installed plugins**. |
+| **GarageBand** | Settings → Audio/MIDI → tick **Enable Audio Units**. |
+| **Logic Pro** | Logic Pro → Settings → Plug-in Manager. If MCA shows *failed*, select it and click **Reset & Rescan Selection**. Insert it from an Audio FX slot → Audio Units → Isoda → MCA. |
+| **Pro Tools** | Not supported yet. Pro Tools only loads plug-ins in Avid's AAX format, and MCA is VST3 / Audio Unit. |
+| **Pyramix** (Windows) | Pyramix picks MCA up from the standard VST3 folder. Restart Pyramix after installing, then insert MCA from a strip's plug-in slot (listed under Isoda). |
+| **Reaper** | Settings → Plug-ins → VST → **Re-scan**. |
+| **Sequoia Pro** (Windows) | Make sure `C:\Program Files\Common Files\VST3` is among Sequoia's VST plug-in folders in its plug-in settings, then rescan or restart Sequoia. MCA is listed under Isoda. |
+| **Studio One** | Settings → Locations → VST Plug-Ins → **Reset Blocklist**, then restart. |
 
 ## Using MCA
 
@@ -174,6 +153,14 @@ Built with the [JUCE](https://juce.com) framework. VST is a registered trademark
 
 ## About
 
-Isoda MCA is made by **Dr. Hideki Isoda** at **Texas Tech University**. Questions, ideas and reports from your own sessions are very welcome; please open an [issue](https://github.com/hidekiisoda/isoda-mca/issues).
+Isoda MCA is made by **Dr. Hideki Isoda** at **Texas Tech University**, as a free tool for the people who care about how a mix holds up everywhere it's played. Questions, ideas and reports from your own sessions are always welcome; please open an [issue](https://github.com/hidekiisoda/isoda-mca/issues).
+
+## Thank you
+
+To my fantastic students and colleagues, who were so willing to test MCA in their own sessions, and whose sharp ears and honest feedback made it better at every step: thank you.
+
+And to my wife, **Hyejin**, who is always supportive of my projects: thank you, for this one and for all the others.
+
+— Hideki Isoda
 
 <sub>© 2026 Dr. Hideki Isoda / Texas Tech University</sub>
