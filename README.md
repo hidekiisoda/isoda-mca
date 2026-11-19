@@ -10,6 +10,7 @@
   <a href="https://github.com/hidekiisoda/isoda-mca/releases/tag/v1.0.7"><b>Download 1.0.7</b></a> ·
   <a href="#install-on-windows">Install on Windows</a> ·
   <a href="#install-on-macos">Install on macOS</a> ·
+  <a href="#install-on-linux">Install on Linux</a> ·
   <a href="#using-mca">Using MCA</a>
 </p>
 
@@ -21,7 +22,7 @@
 
 Most listeners never hear your mix the way you do on studio monitors. A wide synth that sounds glorious in stereo can all but vanish on a phone speaker; a reverb return out of phase can hollow out a vocal on the radio. MCA lets you hear and measure that in a click, right on your master bus, before anyone else does.
 
-MCA is a VST3 plug-in for Windows and a VST3 and Audio Unit plug-in for Macs with Apple silicon. In your DAW it appears as **MCA** by **Isoda**, in the *Analyzer* category.
+MCA is a VST3 plug-in for Windows, a VST3 and Audio Unit plug-in for Macs with Apple silicon, and a VST3 and LV2 plug-in for Linux. In your DAW it appears as **MCA** by **Isoda**, in the *Analyzer* category.
 
 ## Download
 
@@ -29,8 +30,9 @@ MCA is a VST3 plug-in for Windows and a VST3 and Audio Unit plug-in for Macs wit
 |---|---|---|
 | **Windows** | [Isoda-MCA-1.0.7-Windows-manual-install.zip](https://github.com/hidekiisoda/isoda-mca/releases/download/v1.0.7/Isoda-MCA-1.0.7-Windows-manual-install.zip) | 64-bit Windows 10 or 11, a VST3 host |
 | **macOS** | [Isoda-MCA-1.0.7-macOS.pkg](https://github.com/hidekiisoda/isoda-mca/releases/download/v1.0.7/Isoda-MCA-1.0.7-macOS.pkg) | Mac with Apple silicon (M1 or later), macOS 11 or later, a VST3 or Audio Unit host |
+| **Linux** | [Isoda-MCA-1.0.7-Linux-x86_64.tar.gz](https://github.com/hidekiisoda/isoda-mca/releases/download/v1.0.7/Isoda-MCA-1.0.7-Linux-x86_64.tar.gz) | 64-bit Linux (x86_64) with glibc 2.35 or later (Ubuntu 22.04+, Debian 12, Fedora 36+, Arch, …), a VST3 or LV2 host |
 
-The Windows package contains the plug-in, a step-by-step install guide, the Quick Start guide and the license. The macOS installer puts both the VST3 and the Audio Unit in place. Either way, installation takes about a minute; the steps are below.
+The Windows and Linux packages contain the plug-in, a step-by-step install guide, the Quick Start guide and the license; the Linux package adds a small install script. The macOS installer puts both the VST3 and the Audio Unit in place. Either way, installation takes about a minute; the steps are below.
 
 ## What it does
 
@@ -83,6 +85,26 @@ MCA is free and isn't code-signed with a paid certificate, so Windows treats it 
 
 4. **The installer opens.** Click **Continue**, **Agree** to the license, then **Install**. It puts both the VST3 and the Audio Unit in place.
 
+## Install on Linux
+
+1. **Extract** the download with your file manager, or in a terminal:
+
+   ```bash
+   tar xzf Isoda-MCA-1.0.7-Linux-x86_64.tar.gz
+   ```
+
+2. **Run the install script** from the extracted folder:
+
+   ```bash
+   cd Isoda-MCA-1.0.7-Linux-x86_64
+   ./install.sh
+   ```
+
+   It copies the VST3 to `~/.vst3` and the LV2 to `~/.lv2`, so no root password is needed. Running it again updates an existing installation; `./install.sh --uninstall` removes MCA.
+3. **Rescan plug-ins** in your DAW (see [Finding MCA in your DAW](#finding-mca-in-your-daw)).
+
+MIDI Learn reads controllers that appear as ALSA MIDI devices. If your controller only exists in JACK, route its MIDI to the plug-in in your DAW, or map it to the *Mono* parameter instead.
+
 ## Finding MCA in your DAW
 
 MCA is listed as **MCA** by **Isoda**, in the *Analyzer* category. If it doesn't appear, rescan your plug-ins:
@@ -90,18 +112,23 @@ MCA is listed as **MCA** by **Isoda**, in the *Analyzer* category. If it doesn't
 | DAW | How to find MCA |
 |---|---|
 | **Ableton Live** | Settings → Plug-Ins → turn on the VST3 system folder (and Audio Units on a Mac) → **Rescan**. |
-| **Bitwig** | Settings → Locations; Bitwig rescans on start. |
+| **Ardour / Mixbus** | Edit → Preferences → Plugins → **Scan for Plugins**. On Linux, MCA is available as VST3 and LV2. |
+| **Bitwig** | Settings → Locations (on Linux, make sure `~/.vst3` is listed); Bitwig rescans on start. |
+| **Carla** (Linux) | Add Plugin → **Refresh**. |
 | **Cubase / Nuendo** | Studio → VST Plug-in Manager → Rescan all. If MCA is listed as blocklisted, select it and click **Reactivate**. |
 | **DaVinci Resolve Studio** | DaVinci Resolve → Preferences → System → Audio Plugins: make sure the VST3 folder (and Audio Units on a Mac) is enabled, then restart Resolve. Insert MCA in a Fairlight track's effects slot, or drag it from Effects → Audio FX onto a clip. |
 | **Digital Performer** | DP checks plug-ins when it starts. If MCA is missing, open Preferences → Audio Plug-ins, make sure MCA is enabled, and restart DP. Insert it from a track's or the master's insert slot (listed under Isoda). |
 | **FL Studio** | Options → Manage plugins → **Find installed plugins**. |
 | **GarageBand** | Settings → Audio/MIDI → tick **Enable Audio Units**. |
 | **Logic Pro** | Logic Pro → Settings → Plug-in Manager. If MCA shows *failed*, select it and click **Reset & Rescan Selection**. Insert it from an Audio FX slot → Audio Units → Isoda → MCA. |
-| **Pro Tools** | Not supported yet. Pro Tools only loads plug-ins in Avid's AAX format, and MCA is VST3 / Audio Unit. |
+| **Pro Tools** | **Not supported.** Pro Tools only loads plug-ins in Avid's AAX format. |
 | **Pyramix** (Windows) | Pyramix picks MCA up from the standard VST3 folder. Restart Pyramix after installing, then insert MCA from a strip's plug-in slot (listed under Isoda). |
-| **Reaper** | Settings → Plug-ins → VST → **Re-scan**. |
+| **Qtractor** (Linux) | View → Options → Plugins: make sure `~/.lv2` (or `~/.vst3`) is among the paths, then restart Qtractor. |
+| **Reaper** | Settings → Plug-ins → VST → **Re-scan** (on Linux, make sure `~/.vst3` is in the path list). |
+| **Renoise** | Preferences → Plug/Misc → **Rescan**. |
 | **Sequoia Pro** (Windows) | Make sure `C:\Program Files\Common Files\VST3` is among Sequoia's VST plug-in folders in its plug-in settings, then rescan or restart Sequoia. MCA is listed under Isoda. |
 | **Studio One** | Settings → Locations → VST Plug-Ins → **Reset Blocklist**, then restart. |
+| **Tracktion Waveform** | Settings → Plugins → **Scan for new plugins**. |
 
 ## Using MCA
 
@@ -149,7 +176,7 @@ MCA collects no data. It makes no network connections, has no analytics or telem
 
 Isoda MCA is **freeware**: free for personal, educational and commercial use on any number of computers. You're welcome to share the unmodified packages with anyone, free of charge, with the license and copyright notice intact. It is not open source. The full terms are in [LICENSE.txt](LICENSE.txt).
 
-Built with the [JUCE](https://juce.com) framework. VST is a registered trademark of Steinberg Media Technologies GmbH; Audio Units is a trademark of Apple Inc. The macOS version embeds the Barlow typeface (SIL Open Font License 1.1).
+Built with the [JUCE](https://juce.com) framework. VST is a registered trademark of Steinberg Media Technologies GmbH; Audio Units is a trademark of Apple Inc. The macOS and Linux versions embed the Barlow typeface (SIL Open Font License 1.1). Linux is a registered trademark of Linus Torvalds.
 
 ## About
 
