@@ -153,13 +153,15 @@ Built with the [JUCE](https://juce.com) framework. VST is a registered trademark
 
 ## About
 
-Isoda MCA is made by **Dr. Hideki Isoda** at **Texas Tech University**, as a free tool for the people who care about how a mix holds up everywhere it's played. Questions, ideas and reports from your own sessions are always welcome; please open an [issue](https://github.com/hidekiisoda/isoda-mca/issues).
+Isoda MCA is made by **Dr. Hideki Isoda** at **Texas Tech University**, as a free tool for anyone who cares how a mix holds up wherever it's played.
+
+This project is 100% self-funded; no grants have been applied for. I believe it can be an excellent example for the Music Informatics course I teach, and I hope it may become an inspiration for my students.
 
 ## Thank you
 
-To my fantastic students and colleagues, who were so willing to test MCA in their own sessions, and whose sharp ears and honest feedback made it better at every step: thank you.
+To my fantastic students and colleagues, who were so willing to test MCA in their own sessions, and whose honest feedback makes it better at every step: thank you.
 
-And to my wife, **Hyejin**, who is always supportive of my projects: thank you, for this one and for all the others.
+And to my wife, **Hyejin**, who is always supportive of me and my projects: thank you, for this one and for all the others.
 
 — Hideki Isoda
 
